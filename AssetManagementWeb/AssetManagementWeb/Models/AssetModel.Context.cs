@@ -13,10 +13,10 @@ namespace AssetManagementWeb.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AssetManagementEntities : DbContext
+    public partial class AssetManagementEntities1 : DbContext
     {
-        public AssetManagementEntities()
-            : base("name=AssetManagementEntities")
+        public AssetManagementEntities1()
+            : base("name=AssetManagementEntities1")
         {
         }
     

@@ -15,7 +15,7 @@ namespace AssetManagementWeb.Models
     public partial class AssetLocation1
     {
         public int Id { get; set; }
-        public Nullable<int> LocationID { get; set; }
+        public Nullable<int> LocationId { get; set; }
         public Nullable<int> AssetId { get; set; }
         public Nullable<System.DateTime> LastSeen { get; set; }
     

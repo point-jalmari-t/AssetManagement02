@@ -134,35 +134,38 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Asset.cs">
-      <DependentUpon>AssetsModel.tt</DependentUpon>
+      <DependentUpon>AssetModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AssetLocation.cs">
-      <DependentUpon>AssetsModel.tt</DependentUpon>
+      <DependentUpon>AssetModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AssetLocation1.cs">
-      <DependentUpon>AssetsModel.tt</DependentUpon>
+      <DependentUpon>AssetModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AssetsModel.Context.cs">
+    <Compile Include="Models\AssetModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AssetsModel.Context.tt</DependentUpon>
+      <DependentUpon>AssetModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AssetsModel.cs">
+    <Compile Include="Models\AssetModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AssetsModel.tt</DependentUpon>
+      <DependentUpon>AssetModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AssetsModel.Designer.cs">
+    <Compile Include="Models\AssetModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AssetsModel.edmx</DependentUpon>
+      <DependentUpon>AssetModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AssignLocationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\WebUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -173,24 +176,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\AssetsModel.Context.tt">
+    <Content Include="Models\AssetModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AssetsModel.Context.cs</LastGenOutput>
-      <DependentUpon>AssetsModel.edmx</DependentUpon>
+      <DependentUpon>AssetModel.edmx</DependentUpon>
+      <LastGenOutput>AssetModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AssetsModel.tt">
+    <Content Include="Models\AssetModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AssetsModel.edmx</DependentUpon>
-      <LastGenOutput>AssetsModel.cs</LastGenOutput>
+      <DependentUpon>AssetModel.edmx</DependentUpon>
+      <LastGenOutput>AssetModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\AssetsModel.edmx">
+    <EntityDeploy Include="Models\AssetModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AssetsModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>AssetModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\AssetsModel.edmx.diagram">
-      <DependentUpon>AssetsModel.edmx</DependentUpon>
+    <Content Include="Models\AssetModel.edmx.diagram">
+      <DependentUpon>AssetModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -220,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Asset\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

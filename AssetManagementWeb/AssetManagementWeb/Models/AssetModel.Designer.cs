@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\PointCollege\Visual Studio\Mobiili\AssetManagement02\AssetManagementWeb\AssetManagementWeb\Models\AssetsModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\PointCollege\Visual Studio\Mobiili\AssetManagement02\AssetManagementWeb\AssetManagementWeb\Models\AssetModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

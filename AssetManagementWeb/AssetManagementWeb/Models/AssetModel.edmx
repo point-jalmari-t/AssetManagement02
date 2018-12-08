@@ -19,7 +19,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LocationID" Type="int" />
+          <Property Name="LocationId" Type="int" />
           <Property Name="AssetId" Type="int" />
           <Property Name="LastSeen" Type="datetime" />
         </EntityType>
@@ -52,7 +52,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AssetLocations">
-              <PropertyRef Name="LocationID" />
+              <PropertyRef Name="LocationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -89,7 +89,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LocationID" Type="Int32" />
+          <Property Name="LocationId" Type="Int32" />
           <Property Name="AssetId" Type="Int32" />
           <Property Name="LastSeen" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AssetLocation" Relationship="Self.FK_AssetLocations_Locations" FromRole="AssetLocations" ToRole="AssetLocation" />
@@ -113,7 +113,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AssetLocations">
-              <PropertyRef Name="LocationID" />
+              <PropertyRef Name="LocationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -129,7 +129,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AssetManagementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AssetManagementEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AssetLocations" EntityType="Self.AssetLocation" />
           <EntitySet Name="AssetLocations1" EntityType="Self.AssetLocation1" />
           <EntitySet Name="Assets" EntityType="Self.Asset" />
@@ -147,7 +147,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AssetManagementModelStoreContainer" CdmEntityContainer="AssetManagementEntities">
+        <EntityContainerMapping StorageEntityContainer="AssetManagementModelStoreContainer" CdmEntityContainer="AssetManagementEntities1">
           <EntitySetMapping Name="AssetLocations">
             <EntityTypeMapping TypeName="AssetManagementModel.AssetLocation">
               <MappingFragment StoreEntitySet="AssetLocation">
@@ -162,7 +162,7 @@
             <EntityTypeMapping TypeName="AssetManagementModel.AssetLocation1">
               <MappingFragment StoreEntitySet="AssetLocations">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
                 <ScalarProperty Name="AssetId" ColumnName="AssetId" />
                 <ScalarProperty Name="LastSeen" ColumnName="LastSeen" />
               </MappingFragment>
