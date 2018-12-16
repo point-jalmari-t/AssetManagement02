@@ -56,6 +56,38 @@ namespace AssetManagementWeb.Controllers
                 return View(model);
         }
 
+        public ActionResult ListJson()
+        {
+            List<LocatedAssetsViewModel> model = new List<LocatedAssetsViewModel>();
+
+            AssetManagementEntities1 entities = new AssetManagementEntities1();
+            try
+            {
+                List<AssetLocation1> assets = entities.AssetLocations1.ToList();
+
+                //muodostetaan näkymämalli tietokannan rivien pohjalta
+                CultureInfo fiFI = new CultureInfo("fi-FI");
+                foreach (AssetLocation1 asset in assets)
+                {
+                    LocatedAssetsViewModel view = new LocatedAssetsViewModel();
+                    view.Id = asset.Id;
+                    view.LocationCode = asset.AssetLocation.Code;
+                    view.LocationName = asset.AssetLocation.Name;
+                    view.AssetCode = asset.Asset.Code;
+                    view.AssetName = asset.Asset.Type + ": " + asset.Asset.Model;
+                    view.LastSeen = asset.LastSeen.Value.ToString(fiFI);
+
+                    model.Add(view);
+                }
+            }
+            finally
+            {
+                entities.Dispose();
+            }
+
+            return Json(model,JsonRequestBehavior.AllowGet);
+        }
+
 
         [HttpPost]
         public JsonResult AssignLocation()
