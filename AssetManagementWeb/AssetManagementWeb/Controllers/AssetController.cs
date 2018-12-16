@@ -24,17 +24,38 @@ namespace AssetManagementWeb.Controllers
             return View();
         }
 
-        // GET: Asset/Details/5
-        public ActionResult Details(int id)
+        public ActionResult List()
         {
-            return View();
+            List<LocatedAssetsViewModel> model = new List<LocatedAssetsViewModel>();
+
+            AssetManagementEntities1 entities = new AssetManagementEntities1();
+            try
+            {
+                List<AssetLocation1> assets = entities.AssetLocations1.ToList();
+
+                //muodostetaan näkymämalli tietokannan rivien pohjalta
+                CultureInfo fiFI = new CultureInfo("fi-FI");
+                foreach (AssetLocation1 asset in assets)
+                {
+                    LocatedAssetsViewModel view = new LocatedAssetsViewModel();
+                    view.Id = asset.Id;
+                    view.LocationCode = asset.AssetLocation.Code;
+                    view.LocationName = asset.AssetLocation.Name;
+                    view.AssetCode = asset.Asset.Code;
+                    view.AssetName = asset.Asset.Type + ": "+asset.Asset.Model;
+                    view.LastSeen = asset.LastSeen.Value.ToString(fiFI);
+
+                    model.Add(view);
+                }
+            }
+            finally
+            {
+                entities.Dispose();
+            }
+
+                return View(model);
         }
 
-        // GET: Asset/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
         [HttpPost]
         public JsonResult AssignLocation()
@@ -84,66 +105,6 @@ namespace AssetManagementWeb.Controllers
             // palautetaan JSON-muotoinen tulos kutsujalle
             var result = new { success = success, error = error };
             return Json(result);
-        }
-
-        // POST: Asset/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Asset/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Asset/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Asset/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Asset/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
