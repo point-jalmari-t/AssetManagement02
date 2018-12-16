@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using AssetManagementWeb.Models;
+using System.Globalization;
 
 namespace AssetManagementWeb.Controllers
 {
@@ -47,22 +48,22 @@ namespace AssetManagementWeb.Controllers
             AssetManagementEntities1 entities = new AssetManagementEntities1();
             try
             {
-                //haetaan ensin paikan id-numero koodin perusteella
-                int locationId = (from a in entities.AssetLocations
-                              where a.Code == inputData.LocationCode
-                              select a.Id).FirstOrDefault();
-
-                //haetaan Laitteen id-numero koodin perusteella
-                int AssetId = (from l in entities.Assets
-                                  where l.Code == inputData.AssetCode
+                // haetaan ensin paikan id-numero koodin perusteella
+                int locationId = (from l in entities.AssetLocations
+                                  where l.Code == inputData.LocationCode
                                   select l.Id).FirstOrDefault();
 
-                if((locationId > 0) &&(AssetId > 0))
+                // haetaan laitteen id-numero koodin perusteella
+                int assetId = (from a in entities.Assets
+                               where a.Code == inputData.AssetCode
+                               select a.Id).FirstOrDefault();
+
+                if ((locationId > 0) && (assetId > 0))
                 {
-                    //tallennetaan uusi rivi aikaleiman kanssa
+                    // tallennetaan uusi rivi aikaleiman kanssa kantaan
                     AssetLocation1 newEntry = new AssetLocation1();
                     newEntry.LocationId = locationId;
-                    newEntry.AssetId = AssetId;
+                    newEntry.AssetId = assetId;
                     newEntry.LastSeen = DateTime.Now;
 
                     entities.AssetLocations1.Add(newEntry);
@@ -70,7 +71,6 @@ namespace AssetManagementWeb.Controllers
 
                     success = true;
                 }
-
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace AssetManagementWeb.Controllers
                 entities.Dispose();
             }
 
-            //palautetaan JSON muodossa
+            // palautetaan JSON-muotoinen tulos kutsujalle
             var result = new { success = success, error = error };
             return Json(result);
         }

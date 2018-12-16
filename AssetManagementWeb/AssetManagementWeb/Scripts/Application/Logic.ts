@@ -8,15 +8,15 @@ class AssignLocationModel {
 function initAssetAssignment() {
 	$("#AssignAssetButton").click(function () {
 
-		var locationCode: string = $("LocationCode").val();
-		var assetCode: string = $("AssetCode").val();
+		var locationCode: string = $("#LocationCode").val();
+		var assetCode: string = $("#AssetCode").val();
 
-		alert("L: " + locationCode + ", A:" + assetCode);
+		alert("L: " + locationCode + ", A: " + assetCode);
 		var data: AssignLocationModel = new AssignLocationModel();
 		data.LocationCode = locationCode;
 		data.AssetCode = assetCode;
 
-		//lähetetään JSON-muotoista dataa palvelimelle
+		// lähetetään JSON-muotoista dataa palvelimelle
 		$.ajax({
 			type: "POST",
 			url: "/Asset/AssignLocation",
@@ -24,12 +24,12 @@ function initAssetAssignment() {
 			contentType: "application/json",
 			success: function (data) {
 				if (data.success == true) {
-					alert("Asset successfully assigned");
+					alert("Asset successfully assigned.");
 				}
 				else {
-					alert("succ error: " + data.error);
-					}
-				},
+					alert("There was an error: " + data.error);
+				}
+			},
 			dataType: "json"
 		});
 	});
